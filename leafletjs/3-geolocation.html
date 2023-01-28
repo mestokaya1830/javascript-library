@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./public/leaflet.css">
+  <script src="./public/leaflet.js"></script>
+
+  <style>
+    #map{
+      width: 100vw;
+      height: 100vh;
+    }
+    </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    let map = L.map('map').setView([37.065842, 37.376080], 12)
+    let osmBase = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png')
+    osmBase.addTo(map)
+    
+    let marker;
+    let circle;
+    const getPosition = (position) => {
+      let lat = position.coords.latitude
+      let long = position.coords.longitude
+      let accuracy = position.coords.accuracy
+
+      if(marker) map.removeLayer(marker)
+      if(circle) map.removeLayer(circle)
+
+      marker = L.marker([lat, long])
+      circle = L.circle([lat, long],{radius: accuracy})
+      let featureGroup  = L.featureGroup([marker, circle]).addTo(map)
+      map.fitBounds(featureGroup.getBounds())
+    }
+
+
+    if(!navigator.geolocation){
+      console.log('Your browser not support for this action!')
+    } else {
+      // setInterval(() => {
+        navigator.geolocation.getCurrentPosition(getPosition)
+      // }, 5000)
+    }
+
+    //for auto update during movement
+      // let loc = navigator.geolocation.watchPosition(data => {
+      //   console.log(data)
+      //   coordinates.push({latitude:data.coords.latitude, longitude:data.coords.longitude})
+      //   console.log(coordinates)
+      // })
+
+  </script>
+</body>
+</html>

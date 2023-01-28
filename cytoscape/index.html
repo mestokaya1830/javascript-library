@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #cy {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="cy"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.20.0/cytoscape.min.js" integrity="sha512-cjmYAonfXK+azDmWqvnqq8xmygHRHqVI7S0zuRxQnvcYVeoakwthRX6pPKoXfG1oIjDvMUtteRV9PhQjJwKWxQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    let customClass = 'gray'
+
+    let cy = cytoscape({
+      container: document.getElementById('cy'),
+      elements: {
+          nodes: [
+            { data: { id: 'a', img:'./img1.png' , weight:100} },
+            { data: { id: 'b', name:'mesto' } },
+            { data: { id: 'c' } },
+            { data: { id: 'd' } },
+            { data: { id: 'e' } },
+            { data: { id: 'f' } },
+            { data: { id: 'g' } },
+            { data: { id: 'h' } },
+            { data: { id: 'j' } },
+            { data: { id: 'k' } },
+
+            //red nodes
+            { data: { id: '1', img:'./img2.png',parent:'1',parentColor: 'blue' }, classes: 'red' },
+            { data: { id: '2' }, classes: 'gray' },
+            { data: { id: '3' }, classes: 'gray' },
+            { data: { id: '4' }, classes: 'gray' }
+          ],
+          edges: [
+            { data: { id: 'ab', source: 'a', target: 'b' } },
+            { data: { id: 'ac', source: 'a', target: 'c' } },
+            { data: { id: 'ad', source: 'a', target: 'd' } },
+            { data: { id: 'ae', source: 'a', target: 'e' } },
+            { data: { id: 'af', source: 'a', target: 'f' } },
+            { data: { id: 'ag', source: 'a', target: 'g' } },
+            { data: { id: 'ah', source: 'a', target: 'h' } },
+            { data: { id: 'aj', source: 'a', target: 'j' } },
+            { data: { id: 'ak', source: 'a', target: 'k' } },
+
+            //red edges
+            { data: { id: '12', source: '1', target: '2' }, classes: 'red' },
+            { data: { id: '13', source: '1', target: '3' }, classes: 'red' },
+            { data: { id: '14', source: '1', target: '4' }, classes: 'red' }
+          ]
+        },
+      layout: {
+        name: 'circle',
+        rows: 1
+      },
+
+      // layout: {
+      //     name: 'breadthfirst',
+      //     directed: true,
+      //     padding: 10,
+      //     /* color: "#ffff00",*/
+      //     fit: true
+      // },
+      style: [
+        {
+          selector: 'node',
+            style: {
+              'shape': 'circle',
+              'background-color':'lightblue',
+              'border-width':2,
+              'border-color':'#444',
+        //       // 'height': '(10*label.lenght)',
+        //       // 'width': '(10*label.lenght)',
+              'label': 'data(id)',
+              "background-image": 'data(img)',
+              "background-fit": "cover cover"
+            },
+          },
+          {
+          selector: '.'+customClass,
+            style: {
+                'background-color': customClass,
+                'line-color': 'gray',
+                'target-arrow-color': 'gray'
+            }
+          },
+          {
+          selector: ':selected',
+            style: {
+                'background-color': 'blue',
+            }
+          },
+          {
+          selector: 'edge',
+            style: {
+              'width': 3,
+              // 'line-color': '#red',
+              // 'target-arrow-color': 'red',
+              'target-arrow-shape': 'triangle',
+              'curve-style': 'bezier',
+              // 'label':'data(id)',
+              'curve-style': 'unbundled-bezier'
+            }
+          }
+      ],
+    });
+    // cy.animate({
+    //   fit: { eles: '#' }
+    // })
+    // .delay(3000)
+    // cy.$('#a').ungrabify()
+    // cy.$('#a').lock()
+    // cy.$('#a').panify()
+    // console.log(cy.$('#a').active())
+    // console.log(cy.$('#a').width())
+    // cy.selectionType('additive')//select multiple nodes
+    cy.$('#a').json({ selected: true })
+    
+    // cy.autolock( true )
+    
+    
+    // console.log(cy.elements())
+    // console.log( cy.elements().jsons() )
+
+    // let eles = cy.add([
+    //   { group: 'nodes', data: { id: 'c' }, position: { x: 300, y: 200 } },
+    //   { group: 'edges', data: { id: 'ac', source: 'a', target: 'c' } }
+    // ])
+
+    // cy.on('tap', 'node', function(evt){
+    //   let node = evt.target;
+    //   console.log( 'tapped ' + node.id() )
+    // })
+
+    // cy.nodes().once('click', function(e){
+    //   var ele = e.target;
+    //   console.log('clicked ' + ele.id());
+    // });
+
+    // let a = cy.$('#a');//put a center of graph
+    // cy.center( a )
+
+    // cy.fit()
+
+    // cy.fit( cy.$('#a, #b,#c,#d') )
+
+    // setTimeout( function(){
+    //   cy.pan({ x: 50, y: -100 })
+    // }, 1000 )
+
+    // setTimeout( function(){
+    //   cy.zoom( 2 )
+    // }, 2000 )
+
+    // setTimeout( function(){
+    //   cy.reset()
+    // }, 3000 )
+
+    // cy.panningEnabled( true )
+    // from left
+    // cy.pan({
+    //   x: 100,
+    //   y: 100 
+    // })
+    //from right
+    // cy.panBy({
+    //   x:100,
+    //   y: 0 
+    // })
+    
+    // let layout = cy.layout({
+    //   name: 'random'
+    // })
+    // layout.run()
+
+  
+    // cy.nodes().animate({
+    //   position: { x: 100, y: 100 },
+    //   style: { backgroundColor: 'red' }
+    // }, {
+    //   duration: 1000
+    // })
+    // cy.nodes().forEach(function( ele ){
+    //   console.log( ele.id() );
+    // })
+    console.log(cy.$('#a').neighborhood())
+
+//     var collection = cy.collection();
+// cy.nodes().on('click', function(e){
+//   var clickedNode = e.target;
+
+//   collection = collection.union(clickedNode);
+//   console.log(collection)
+// });
+// var collection = cy.elements('node[weight > 50]');
+// cy.remove( collection );
+
+// cy.style()
+//   .clear() // start a fresh stylesheet without even the default stylesheet
+//   .selector('node')
+//     .style({
+//       'background-color':'lightblue',
+//       'shape':'circle',
+//       'border-width':3,
+//       'border-color':'#444',
+//       'label':'data(id)'
+//     }
+//       )
+//   .selector('edge')
+//       .style({
+//       'width': 1,
+//       'line-color': '#444'
+//     })
+//   .update()
+// ;
+
+  </script>
+</body>
+</html>

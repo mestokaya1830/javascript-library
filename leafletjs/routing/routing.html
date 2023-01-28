@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../public/leaflet.css">
+  <link rel="stylesheet" href="../public/leaflet-routing-machine.css">
+  <script src="../public/leaflet.js"></script>
+  <script src="../public/leaflet-routing-machine.min.js"></script>
+
+  <style>
+    #map {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <!-- <button onclick="alert('Its work')">Run</button> -->
+  <script>
+    //add map layer
+    let map = L.map('map').setView([37.065842, 37.376080],0)
+    let osmBase = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png')
+    osmBase.addTo(map)
+
+    //add marker on layer
+    L.Routing.control({
+      waypoints: [
+        L.latLng(37.065842, 37.376080),
+        L.latLng(39.933365, 32.859741)
+      ]
+    }).addTo(map);
+  </script>
+</body>
+
+</html>

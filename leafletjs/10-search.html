@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./public/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <script src="./public/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+  <style>
+    #map{
+      width: 100vw;
+      height: 100vh;
+    }
+    </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    let map = L.map('map').setView([37.065842, 37.376080], 12)
+    let osmBase = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png')
+    osmBase.addTo(map)
+    // let marker = L.marker([37.065842, 37.376080]).addTo(map)
+    // L.Control.geocoder().addTo(map)
+    var geocoder = L.Control.geocoder({
+  defaultMarkGeocode: false
+})
+  .on('markgeocode', function(e) {
+    var bbox = e.geocode.bbox;
+    var poly = L.polygon([
+      bbox.getSouthEast(),
+      bbox.getNorthEast(),
+      bbox.getNorthWest(),
+      bbox.getSouthWest()
+    ]).addTo(map);
+    map.fitBounds(poly.getBounds());
+  })
+  .addTo(map);
+  </script>
+</body>
+</html>

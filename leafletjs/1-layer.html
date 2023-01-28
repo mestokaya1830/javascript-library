@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./public/leaflet.css">
+  <script src="./public/leaflet.js"></script>
+
+  <style>
+    #map{
+      width: 100vw;
+      height: 100vh;
+    }
+    #sidebar{
+        width: 200px;
+        height: 150px;
+        background-color: aliceblue;
+        border-radius: 5px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+    </style>
+</head>
+<body>
+  <div id="map">
+    <div id="sidebar">
+        <button onclick="alert('Hello')">Click Me</button>
+    </div>
+  </div>
+  
+  <script>
+    //add map layer
+    let map = L.map('map').setView([37.065842, 37.376080], 12)
+    let osmBase = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png')
+    osmBase.addTo(map)
+
+        L.control.layers({
+            "Google Hybrid": L.tileLayer('http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}',{
+                maxZoom: 20,
+                subdomains:['mt0','mt1','mt2','mt3']
+            }).addTo(map),//add at the start
+            
+            "Google Street": L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+                maxZoom: 20,
+                subdomains:['mt0','mt1','mt2','mt3']
+            }),
+
+            "Google Satellite": L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+                maxZoom: 20,
+                subdomains:['mt0','mt1','mt2','mt3']
+            }),
+
+            "Google Terrain": L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
+                maxZoom: 20,
+                subdomains:['mt0','mt1','mt2','mt3']
+            }),
+
+            "OSM": L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: null
+            })
+        },
+        {
+            'Draw Layer': L.featureGroup().addTo(map)
+        },
+        {
+            position: 'topleft',
+            collapsed: true
+        }
+        ).addTo(map);
+        
+    //add marker on layer
+    let marker = L.marker([37.065842, 37.376080]).addTo(map)
+  
+  </script>
+</body>
+</html>

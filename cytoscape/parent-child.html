@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #cy {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="cy"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.20.0/cytoscape.min.js" integrity="sha512-cjmYAonfXK+azDmWqvnqq8xmygHRHqVI7S0zuRxQnvcYVeoakwthRX6pPKoXfG1oIjDvMUtteRV9PhQjJwKWxQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    var cy = window.cy = cytoscape({
+  container: document.getElementById('cy'),
+
+  boxSelectionEnabled: false,
+  autounselectify: true,
+
+  style: [{
+      selector: 'node',
+      css: {
+        'content': 'data(id)',
+        'text-valign': 'center',
+        'text-halign': 'center'
+      }
+    },
+    {
+      selector: '$node > node',
+      css: {
+        'padding-top': '10px',
+        'padding-left': '10px',
+        'padding-bottom': '10px',
+        'padding-right': '10px',
+        'text-valign': 'top',
+        'text-halign': 'center',
+        'background-color': '#bbb'
+      }
+    },
+    {
+      selector: 'edge',
+      css: {
+        'curve-style': 'bezier',
+        'target-arrow-shape': 'triangle'
+      }
+    },
+    {
+      selector: ':parent',
+      css: {
+        'border-color': 'data(parentColor)',
+        'line-color': 'black',
+        'target-arrow-color': 'black',
+        'source-arrow-color': 'black'
+      }
+    }
+  ],
+
+  elements: {
+    nodes: [{
+        data: {
+          id: 'a',
+          parent: 'b'
+        },
+        position: {
+          x: 215,
+          y: 85
+        }
+      },
+      {
+        data: {
+          id: 'b',
+          parentColor: 'blue'
+        }
+      },
+      {
+        data: {
+          id: 'c',
+          parent: 'b'
+        },
+        position: {
+          x: 300,
+          y: 85
+        }
+      },
+      {
+        data: {
+          id: 'd'
+        },
+        position: {
+          x: 215,
+          y: 175
+        }
+      },
+      {
+        data: {
+          id: 'e',
+          parentColor: 'red'
+        }
+      },
+      {
+        data: {
+          id: 'f',
+          parent: 'e'
+        },
+        position: {
+          x: 300,
+          y: 175
+        }
+      }
+    ],
+    edges: [{
+        data: {
+          id: 'ad',
+          source: 'a',
+          target: 'd'
+        }
+      },
+      {
+        data: {
+          id: 'eb',
+          source: 'e',
+          target: 'b'
+        }
+      }
+
+    ]
+  },
+
+  layout: {
+    name: 'preset',
+    padding: 5
+  }
+});
+    // cy.$('#a').ungrabify()
+    // cy.$('#a').lock()
+    // cy.$('#a').panify()
+    // console.log(cy.$('#a').active())
+    // console.log(cy.$('#a').width())
+    // cy.selectionType('additive')//select multiple nodes
+    // cy.$('#a').json({ selected: true })
+    // cy.autolock( true )
+    
+    // console.log(cy.elements())
+    // console.log( cy.elements().jsons() )
+
+    // let eles = cy.add([
+    //   { group: 'nodes', data: { id: 'c' }, position: { x: 300, y: 200 } },
+    //   { group: 'edges', data: { id: 'ac', source: 'a', target: 'c' } }
+    // ])
+
+    // cy.on('tap', 'node', function(evt){
+    //   let node = evt.target;
+    //   console.log( 'tapped ' + node.id() )
+    // })
+
+    // cy.nodes().once('click', function(e){
+    //   var ele = e.target;
+    //   console.log('clicked ' + ele.id());
+    // });
+
+    // let a = cy.$('#a');//put a center of graph
+    // cy.center( a )
+
+    // cy.fit()
+
+    // cy.fit( cy.$('#a, #b,#c,#d') )
+
+    // setTimeout( function(){
+    //   cy.pan({ x: 50, y: -100 })
+    // }, 1000 )
+
+    // setTimeout( function(){
+    //   cy.zoom( 2 )
+    // }, 2000 )
+
+    // setTimeout( function(){
+    //   cy.reset()
+    // }, 3000 )
+
+    // cy.panningEnabled( true )
+    // from left
+    // cy.pan({
+    //   x: 100,
+    //   y: 100 
+    // })
+    //from right
+    // cy.panBy({
+    //   x:100,
+    //   y: 0 
+    // })
+    
+    // let layout = cy.layout({
+    //   name: 'random'
+    // })
+
+    // layout.run()
+
+    // cy.style()
+    //   .clear()
+    // .selector('node')
+    //   .style('background-color', 'magenta')
+    // .selector('edge')
+    //   .style({
+    //   'width': 3,
+    //   'line-color': 'yellow'
+    // })
+    // cy.style( stringStylesheet )
+
+  </script>
+</body>
+</html>

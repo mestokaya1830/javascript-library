@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../public/leaflet.css">
+  <link rel="stylesheet" href="../../public/leaflet-measure.css">
+  <script src="../../public/leaflet.js"></script>
+  <script src="../../public/leaflet-measure.js"></script>
+  <script src="../../public/tr-cities.js"></script>
+  <script src="../../public/tr.js"></script>
+
+  <style>
+    #map{
+      /* width: 100vw; */
+      height: 800px;
+    }
+    .legend{
+      width: 200px;
+      background-color:#444;
+      padding: 10px;
+      color:#fff;
+      border-radius: 4px;
+      opacity: 0.7;
+    }
+    </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    console.log(turkeyCities.features)
+    //add map layer
+    let map = L.map('map').setView([39.0630833172536, 35.245601299979455], 6)
+    let osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png')
+    osm.addTo(map)
+
+    function citiesOnEachFeature(feature, layer) {
+      let center = layer.getBounds().getCenter()
+      L.marker(center).addTo(map)
+      //or
+      // L.circleMarker(center).addTo(map).bindPopup(feature.properties.name)
+
+      //custom circle marker
+      // let customCircleMarker = {
+      //       radius: 8,
+      //       fillColor: 'green',
+      //       color: 'black',
+      //       weight: 1,
+      //       opacity: 1,
+      //       fillOpacity: 0.8
+      //   };
+      // L.circleMarker(center, customCircleMarker).addTo(map).bindPopup(feature.properties.name)
+  }
+
+    L.geoJSON(turkeyCities, {
+      onEachFeature:citiesOnEachFeature
+    })
+
+
+  </script>
+</body>
+</html>

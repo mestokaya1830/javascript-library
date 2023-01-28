@@ -1,0 +1,35 @@
+[
+  {
+    "properties": {
+      "name":"Name 1",
+      "truckId":"01",
+      "coordinates": [
+        37.066478334434336,
+        37.373594670901866
+      ],
+      "icon":"../public/images/truck.png"
+    }
+  },
+  {
+    "properties": {
+      "name":"Name 2",
+      "truckId":"02",
+      "coordinates": [
+        37.0581975030845,
+        37.363458670967475
+      ],
+      "icon":"../public/images/truck2.png"
+    }
+  },
+  {
+    "properties": {
+      "name":"Name 3",
+      "truckId":"03",
+      "coordinates": [
+        37.07223074604589,
+        37.37878245562726
+      ],
+      "icon":"../public/images/truck3.png"
+    }
+  }
+]

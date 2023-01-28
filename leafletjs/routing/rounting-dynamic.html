@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Geolocation</title>
+  <link rel="stylesheet" href="../public/leaflet.css">
+  <link rel="stylesheet" href="../public/leaflet-routing-machine.css">
+	<script src="../public/leaflet.js"></script>
+	<script src="../public/leaflet-routing-machine.min.js"></script>
+
+  <style>
+    #map {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+	
+	<script>
+		var map = L.map('map', {preferCanvas: true}).setView([37.06678, 37.37314], 17);
+		mapLink = "<a href='http://openstreetmap.org'>OpenStreetMap</a>";
+		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: 'Leaflet &copy; ' + mapLink + ', contribution', maxZoom: 18 }).addTo(map);
+
+		var marker = L.marker([37.065926,37.373276]).addTo(map);
+		map.on('click', function (e) {
+			var newMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+			L.Routing.control({
+				waypoints: [
+					L.latLng(37.065926,37.373276),
+					L.latLng(e.latlng.lat, e.latlng.lng)
+				]
+			}).on('routesfound', function (e) {
+				var routes = e.routes;
+				console.log(routes);
+				e.routes[0].coordinates.forEach(function (coord, index) {
+					setTimeout(function () {
+						marker.setLatLng([coord.lat, coord.lng]);
+					}, 100 * index)
+				})
+
+			}).addTo(map);
+		});
+
+
+	</script>
+
+
+</body>
+
+</html>

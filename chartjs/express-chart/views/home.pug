@@ -1,0 +1,9 @@
+extends layout 
+block content
+  h2  Home
+    div(style="width: 600px; height: 400px;")
+      canvas#myChart
+
+  script(src="https://cdn.jsdelivr.net/npm/chart.js")
+  script
+    include ../chart.js 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="width: 600px; height: 400px;">
+    <canvas id="myChart"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+  // Chart.defaults.elements.bar.borderWidth = 10
+  // const plugin = {
+  //   id: 'custom_canvas_background_color',
+  //   beforeDraw: (chart) => {
+  //     const ctx = chart.canvas.getContext('2d');
+  //     ctx.save();
+  //     ctx.globalCompositeOperation = 'destination-over';
+  //     ctx.fillStyle = 'lightGreen';
+  //     ctx.fillRect(0, 0, chart.width, chart.height);
+  //     ctx.restore();
+  //   }
+  // }
+  let myChart = new Chart(document.getElementById('myChart'), {
+    type: 'pie',
+    data: {
+      labels: ['Javascript','Python','Java','Go','C++','C#'],
+      datasets: [{
+        label: 'Pie Chart',
+        backgroundColor: ['lightblue','red','green','orange', 'yellow','brown'],
+        borderColor: '#999',
+        borderWidth: 1,
+        data: [80, 90, 70, 60, 20, 30],
+      }]
+    },
+    // plugins:[plugin],
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: 'Title',
+          font:{size: 30},
+          padding: {
+            top: 0,
+            bottom: 0
+          }
+        },
+        subtitle: {
+          display: true,
+          text: 'Subtitle'
+        },
+        legend: {
+          display: true,
+          position: 'top',
+          labels: {
+            color: 'blue',
+            font:{size: 10}
+          }
+        }
+      }
+    }
+  })
+  console.log(myChart.data)
+  </script>
+</body>
+</html>

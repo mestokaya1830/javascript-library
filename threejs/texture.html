@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.122.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.122.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script type="module">
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      const geometry = new THREE.BoxGeometry(1, 1, 1);
+      // const material = new THREE.MeshBasicMaterial({
+      //   color: 0xffffff,
+      //   wireframe: true,
+      // });
+      const cube_materials = [
+        new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('./img/Other-python-icon.png'),side:THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('./img/css-3-icon.png'),side:THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('./img/html-5-icon.png'),side:THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('./img/javascript-icon.png'),side:THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('./img/mysql-icon.png'),side:THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('./img/php-icon.png'),side:THREE.DoubleSide})
+      ]
+      const material = new THREE.MeshFaceMaterial(cube_materials)
+      const cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+      camera.position.z = 3
+      
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.update();
+      function animate() {
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.005;
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate()
+    </script>
+  </body>
+</html>

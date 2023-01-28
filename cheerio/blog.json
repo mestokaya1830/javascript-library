@@ -1,0 +1,226 @@
+[
+  {
+    "date": "2022-09-09",
+    "content": "I Tried Astro - 5 Reasons Why I Love It!"
+  },
+  {
+    "date": "2022-08-26",
+    "content": "Build a JavaScript Memory Match Game"
+  },
+  {
+    "date": "2022-08-25",
+    "content": "Create a Link Shortener App with SvelteKit, TypeScript, and Directus.io"
+  },
+  {
+    "date": "2022-08-10",
+    "content": "JavaScript Callbacks Explained in 5 Minutes"
+  },
+  {
+    "date": "2022-08-03",
+    "content": "My Favorite FREE VS Code Font in 2022  - Install and Setup with FONT LIGATURES!"
+  },
+  {
+    "date": "2022-08-02",
+    "content": "BRAND NEW VS Code Extension for Testing APIs"
+  },
+  {
+    "date": "2022-07-20",
+    "content": "15 Common Beginner JavaScript Mistakes"
+  },
+  {
+    "date": "2022-07-15",
+    "content": "Setup a Custom Domain with Netlify"
+  },
+  {
+    "date": "2022-05-18",
+    "content": "Top 5 Struggles of a Developer Advocate"
+  },
+  {
+    "date": "2022-01-26",
+    "content": "My Terminal Has SUPER Powers!"
+  },
+  {
+    "date": "2022-01-08",
+    "content": "Goals for 2022"
+  },
+  {
+    "date": "2022-01-07",
+    "content": "Must Have SvelteKit Extension for VS Code - SvelteKit Snippets"
+  },
+  {
+    "date": "2021-12-09",
+    "content": "Announcing Advent of JavaScript - A FREE Series of JavaScript Challenges"
+  },
+  {
+    "date": "2021-09-11",
+    "content": "100k Subscribers On YouTube - 5 Things I Learned"
+  },
+  {
+    "date": "2021-07-24",
+    "content": "I Created a Developer Rap Video - Here's What I Learned"
+  },
+  {
+    "date": "2021-07-15",
+    "content": "Why and How to Get Started Live Streaming"
+  },
+  {
+    "date": "2021-03-10",
+    "content": "5 Tips for Crushing Developer Interviews"
+  },
+  {
+    "date": "2021-01-05",
+    "content": "JavaScript Array Filter Method Practice in 5 Minutes"
+  },
+  {
+    "date": "2020-12-17",
+    "content": "Next.js 10 Image Component - A First Look"
+  },
+  {
+    "date": "2020-11-11",
+    "content": "5 Things I've Learned From Creating YouTube Videos"
+  },
+  {
+    "date": "2020-10-29",
+    "content": "The Easiest Way to Add Node.js User Authentication"
+  },
+  {
+    "date": "2020-10-22",
+    "content": "5 Ways to Customize VS Code"
+  },
+  {
+    "date": "2020-10-06",
+    "content": "Build an Authenticated JAMstack App with Next.js, Airtable, Auth0, and Tailwind CSS"
+  },
+  {
+    "date": "2020-09-23",
+    "content": "Top 5 Pieces of Advice for Aspiring and Learning Developers"
+  },
+  {
+    "date": "2020-09-16",
+    "content": "Settings Sync is Built Into Visual Studio Code Now"
+  },
+  {
+    "date": "2020-09-02",
+    "content": "Supercharge Your Git Workflow with the GitLens VS Code Extension"
+  },
+  {
+    "date": "2020-08-30",
+    "content": "Parse JSON Request Body in Express"
+  },
+  {
+    "date": "2020-08-12",
+    "content": "I Created My First Google Chrome Extension"
+  },
+  {
+    "date": "2020-08-07",
+    "content": "How To Redirect Netlify Functions To  a Simpler Path"
+  },
+  {
+    "date": "2020-06-24",
+    "content": "How To Create and Publish NPM Packages"
+  },
+  {
+    "date": "2020-06-24",
+    "content": "How To Test NPM Packages Locally"
+  },
+  {
+    "date": "2020-06-19",
+    "content": "Convert Number from Decimal to Hexadecimal in JavaScript (and visa versa)"
+  },
+  {
+    "date": "2020-06-17",
+    "content": "Cloudinary Image Upload with Nodejs"
+  },
+  {
+    "date": "2020-06-10",
+    "content": "React Router in 5 Minutes"
+  },
+  {
+    "date": "2020-05-20",
+    "content": "VS Code React Setup - 5 Tips"
+  },
+  {
+    "date": "2020-04-29",
+    "content": "Visual Studio Code Browser Preview Extension"
+  },
+  {
+    "date": "2020-04-25",
+    "content": "Open Anchor Link in New Tab"
+  },
+  {
+    "date": "2020-04-21",
+    "content": "Introduction to the JAMstack Course - What I Learned"
+  },
+  {
+    "date": "2020-04-15",
+    "content": "Top Visual Studio Code Git Extensions in 2020"
+  },
+  {
+    "date": "2020-04-10",
+    "content": "CS Degree vs Programming Bootcamp vs Self-taught"
+  },
+  {
+    "date": "2020-03-18",
+    "content": "10 Examples with CSS Grid"
+  },
+  {
+    "date": "2020-02-27",
+    "content": "Configure a Proxy in React"
+  },
+  {
+    "date": "2020-02-12",
+    "content": "Twilio and Node - Send Your First Text Message"
+  },
+  {
+    "date": "2020-02-07",
+    "content": "N+1>N It's Part of the Auth0 Culture"
+  },
+  {
+    "date": "2020-02-05",
+    "content": "Build a JavaScript Search Bar"
+  },
+  {
+    "date": "2020-01-29",
+    "content": "Add VS Code To Your Path"
+  },
+  {
+    "date": "2020-01-29",
+    "content": "Settings Sync Extension for Visual Studio Code"
+  },
+  {
+    "date": "2020-01-25",
+    "content": "Authentication Experience From a Developer - Frank Calise"
+  },
+  {
+    "date": "2020-01-25",
+    "content": "Querying Multiple Datasets with Gatsby Source Filesystem"
+  },
+  {
+    "date": "2020-01-22",
+    "content": "I Got Corrected on My Second Day, and I Loved It"
+  },
+  {
+    "date": "2020-01-16",
+    "content": "My First Week at Auth0"
+  },
+  {
+    "date": "2019-10-13",
+    "content": "Node and Express for Beginners"
+  },
+  {
+    "date": "2019-10-02",
+    "content": "Build a Pokedex with Vanilla JavaScript - Part 2"
+  },
+  {
+    "date": "2019-09-04",
+    "content": "Build a Pokedex with Vanilla JavaScript"
+  },
+  {
+    "date": "2019-08-27",
+    "content": "How I Prepare for Conference Talks"
+  },
+  {
+    "date": "2019-08-19",
+    "content": "Hello World"
+  }
+]

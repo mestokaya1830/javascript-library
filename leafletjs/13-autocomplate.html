@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="./public/leaflet.css">
+    <script src="./public/leaflet.js"></script>
+
+    <style>
+        .con{
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        #map{
+            position: relative;
+            width:calc(100vw - 300px);
+            height:calc(100vh - 160px);
+        }
+        .sidebar {
+            width: 300px;
+            height: 100%;
+            background: white;
+            transition: ease all .25s
+        }
+    </style>
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body>
+    <div class="con">
+        <div class="sidebar">
+            <input type="text" class="form-control" id="pac-input" placeholder="search...">
+            <div class="">
+                <p id="name"></p>
+                <p id="address"></p>
+            </div>
+        </div>
+        <div id="map"></div>
+    </div>
+
+     <script>
+       function initMap() {
+         const map = new google.maps.Map(document.getElementById("map"), {
+           center: { lat: 51.505, lng: -0.09 },
+           zoom: 13,
+           mapTypeControl: false,
+         });
+         const name = document.getElementById('name');
+         const address = document.getElementById('address');
+         
+         const card = document.getElementById("pac-card");
+         const input = document.getElementById("pac-input");
+         
+         const biasInputElement = document.getElementById("use-location-bias");
+         const strictBoundsInputElement = document.getElementById("use-strict-bounds");
+         const options = {
+           fields: ["formatted_address", "geometry", "name"],
+           strictBounds: false,
+           types: ["establishment"],
+         };
+       
+         map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
+       
+         // AC 1 init
+         const autocomplete = new google.maps.places.Autocomplete(input, options);
+         autocomplete.setComponentRestrictions({
+           country: ["gb"],
+         });
+
+         
+         // ac binds
+         autocomplete.bindTo("bounds", map);
+       
+         const infowindow = new google.maps.InfoWindow();
+         const infowindowContent = document.getElementById("infowindow-content");
+       
+         infowindow.setContent(infowindowContent);
+       
+         const marker = new google.maps.Marker({
+           map,
+           anchorPoint: new google.maps.Point(0, -29),
+         });
+       
+         // ac 1
+         autocomplete.addListener("place_changed", () => {
+           infowindow.close();
+           marker.setVisible(false);
+       
+           const place = autocomplete.getPlace();
+           
+           //ac1 dynamic inputs
+           name.innerHTML = place.name;
+           address.innerHTML = place.formatted_address;
+
+           if (!place.geometry || !place.geometry.location) {
+             window.alert("No details available for input: '" + place.name + "'");
+             return;
+           }
+       
+
+           if (place.geometry.viewport) {
+             map.fitBounds(place.geometry.viewport);
+           } else {
+             map.setCenter(place.geometry.location);
+             map.setZoom(17);
+           }
+       
+           marker.setPosition(place.geometry.location);
+           marker.setVisible(true);
+         });
+       }
+       
+       window.initMap = initMap;
+       </script>
+       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhpogR3ePL3nFimrwAyNdUn3qo8B26taU&callback=initMap&libraries=places&v=weekly"></script>
+          
+</body>
+<!-- END: Body-->
+
+</html>

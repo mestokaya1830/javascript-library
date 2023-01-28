@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Click Events</h2>
+    <p>
+      <button name="msg" id="msg" class="msg" data="msg" onclick="msg()">
+        Send Message
+      </button>
+    </p>
+    <hr />
+    <a
+      href="https://youtube.com"
+      name="youtube"
+      id="youtube"
+      class="youtube"
+      data="youtube"
+      >Youtube</a
+    >
+
+    <hr />
+    <div class="btn-container">
+      <button id="btn1" class="btn" name="btn1" data="btn" onclick="btn1()">
+        Button 1
+      </button>
+      <button id="btn2" class="btn" name="btn1" data="btn" onclick="btn2()">
+        Button 2
+      </button>
+      <button id="btn3" class="btn" name="btn1" data="btn" onclick="btn3()">
+        Button 3
+      </button>
+    </div>
+    <script>
+      function msg() {
+        alert("Hello");
+      }
+      function btn1() {
+        alert("Btn1");
+      }
+      function btn2() {
+        alert("Btn2");
+      }
+      function btn3() {
+        alert("Btn3");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./public/leaflet.css">
+  <script src="./public/leaflet.js"></script>
+  
+  <style>
+    #map{
+      width: 100vw;
+      height: 700px;
+    }
+    </style>
+</head>
+<body>
+  <div id="map"></div>
+  <input type="button" onclick="fullScreen()" name="" id="fullScreenBtn" value="Fullscreen">
+
+  <script>
+    //add map layer
+    let map = L.map('map').setView([37.065842, 37.376080], 12)
+    let osmBase = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png')
+    osmBase.addTo(map)
+
+    L.control.scale().addTo(map)//look at the bottom left to see scale info
+    //add marker on layer
+    let marker = L.marker([37.065842, 37.376080]).addTo(map).bindPopup(`
+      <div style="min-width:300px;min-height:150px;">
+        <h2 style="width:100%;">Add some text</h2>
+        <img src="./public/img4.png" alt="" style="width:100%;"/>
+      </div>`
+    )
+
+      const fullScreen = () => {
+        document.getElementById('map').requestFullscreen()
+      }
+  </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Set Region</title>
+
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+
+    <!--Add mapbox.js -->
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+
+    <!--Add draw plugin -->
+    <link rel='stylesheet' href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.css' />
+    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.js'></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #delete,
+        #export,
+        #name {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            z-index: 100;
+            background: white;
+            color: black;
+            padding: 6px;
+            border-radius: 4px;
+            font-family: 'Helvetica Neue';
+            cursor: pointer;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        #export {
+            top: 130px;
+        }
+
+        #name {
+            top: 90px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+    <div id='delete'>Delete Region</div>
+    <a href='#' id='export'>Save Region</a>
+    <input type="text" name="" id="name" placeholder="Enter region name...">
+
+    <script>
+        let map = L.mapbox.map('map').setView([53.505937035392165, -2.1446701133293664], 6);
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map)
+        L.control.layers({
+            'Satellite Map': L.mapbox.tileLayer('bobbysud.map-l4i2m7nd', {
+                detectRetina: true
+            }).addTo(map),
+            'Terrain Map': L.mapbox.tileLayer('bobbysud.i2pfp2lb', {
+                detectRetina: true
+            })
+        }).addTo(map);
+
+        var featureGroup = L.featureGroup().addTo(map);
+        var drawControl = new L.Control.Draw({
+            draw:{
+                circle:false
+            },
+            edit: {
+                featureGroup: featureGroup,
+            },
+
+        }).addTo(map);
+
+        map.on('draw:created', function (e) {
+            featureGroup.addLayer(e.layer);
+        });
+
+        document.getElementById('delete').onclick = function (e) {
+            featureGroup.clearLayers();
+        }
+
+        document.getElementById('export').onclick = function (e) {
+            let name = document.getElementById('name').value
+            alert(name)
+            var data = featureGroup.toGeoJSON()
+            var convertedData = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data));
+            document.getElementById('export').setAttribute('href', 'data:' + convertedData);
+            document.getElementById('export').setAttribute('download', 'data.geojson');
+        }
+    </script>
+
+</body>
+
+</html>
